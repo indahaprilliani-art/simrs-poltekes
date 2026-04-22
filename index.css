@@ -1,0 +1,103 @@
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(49, 143, 49);
+    color: white;
+    padding: 12px;
+}
+
+.header-menu .title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header-menu .menu {
+    font-size: 16px;
+    display: flex;
+    gap: 14px;
+}
+
+.header-menu .menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu .menu .active {
+    color: black;
+}
+
+.header-menu .button-auth button {
+    background-color: red;
+    color: white;
+    border-radius: 16px;
+    padding: 12px;
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.menu .card-menu {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        border-radius: 12px;
+        padding: 12px;
+    }
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+    .container {
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .form {
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-top: 10px;
+    }
+    input, select {
+        padding: 8px;
+        margin-top: 5px;
+    }
+    button {
+        margin-top: 17px;
+        padding: 10px;
+        background-color: rgb(85, 82, 231);
+        color: white;
+        border-radius: 5px;
+        }
