@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMKES</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>SIMKES</h2>
+        <a href="index.html">Dashboard</a>
+        <a href="pendaftaran.html">Pendaftaran</a>
+        <a href="poli.html">Pemeriksaan Poli</a>
+        <a href="farmasi.html">Farmasi</a>
+        <a class="active" href="kasir.html">Kasir</a>
+        <a href="login.html">Logout</a>
+    </div>
+
+    <div class="card">
+    <h2>Pembayaran</h2>
+
+    <input type="text" id="NamaPasien" placeholder="Nama Pasien">
+    <input type="number" id="Total" placeholder="Total Pembayaran">
+    <button onclick="Bayar()">Bayar</button>
+    </div>
+
+    <div class="card">
+    <h2>Riwayat Transaksi</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Pasien</th>
+                <th>Total</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelTransaksi">
+            <tr>
+                <td>1</td>
+                <td>Budi</td>
+                <td>100000</td>
+                <td>
+                    <span class="badge done">Lunas</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+function Bayar() {
+
+    let nama = document.getElementById("NamaPasien").value;
+    let total = document.getElementById("Total").value;
+
+    if (nama.trim() === "" || total === "") {
+        alert("Data pembayaran harus diisi!");
+        return;
+    }
+
+    let tabel = document.getElementById("tabelTransaksi");
+
+    let row = tabel.insertRow();
+    let nomor = tabel.rows.length;
+
+    row.insertCell(0).innerHTML = nomor;
+    row.insertCell(1).innerHTML = nama;
+    row.insertCell(2).innerHTML = "Rp " + Number(total).toLocaleString("id-ID");
+    row.insertCell(3).innerHTML =
+        '<span class="badge done">Lunas</span>';
+
+    document.getElementById("NamaPasien").value = "";
+    document.getElementById("Total").value = "";
+
+    alert("Pembayaran berhasil!");
+}
+</script>
+</body>
+</html>

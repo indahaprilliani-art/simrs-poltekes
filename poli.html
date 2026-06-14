@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMKES</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>SIMKES</h2>
+        <a href="index.html">Dashboard</a>
+        <a href="pendaftaran.html">Pendaftaran</a>
+        <a class="active" href="poli.html">Pemeriksaan Poli</a>
+        <a href="farmasi.html">Farmasi</a>
+        <a href="kasir.html">Kasir</a>
+        <a href="login.html">Logout</a>
+    </div>
+   <div class="card">
+    <h2>Pemeriksaan Poli</h2>
+
+    <input id="NamaPasien" placeholder="Nama Pasien">
+    <input id="Diagnosa" placeholder="Diagnosa">
+    <input id="Tindakan" placeholder="Tindakan">
+
+    <button onclick="SimpanPemeriksaan()">
+        Simpan Pemeriksaan
+    </button>
+    </div>
+
+    <div class="card">
+    <h2>Antrian Poli</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Diagnosa</th>
+                <th>Tindakan</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tabelPemeriksaan">
+        </tbody>
+    </table>
+    </div>
+
+    </div>
+    <script>
+    function SimpanPemeriksaan() {
+
+    let nama = document.getElementById("NamaPasien").value;
+    let diagnosa = document.getElementById("Diagnosa").value;
+    let tindakan = document.getElementById("Tindakan").value;
+
+    if (nama.trim() === "" || diagnosa.trim() === "") {
+        alert("Nama pasien dan diagnosa wajib diisi!");
+        return;
+    }
+
+    let tabel = document.getElementById("tabelPemeriksaan");
+
+    let row = tabel.insertRow();
+    let nomor = tabel.rows.length;
+
+    row.insertCell(0).innerHTML = nomor;
+    row.insertCell(1).innerHTML = nama;
+    row.insertCell(2).innerHTML = diagnosa;
+    row.insertCell(3).innerHTML = tindakan;
+    row.insertCell(4).innerHTML = "Selesai";
+
+    document.getElementById("NamaPasien").value = "";
+    document.getElementById("Diagnosa").value = "";
+    document.getElementById("Tindakan").value = "";
+
+    alert("Data pemeriksaan berhasil disimpan!");
+}
+</script>
+</body>
+</html>
