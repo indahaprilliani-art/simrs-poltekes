@@ -22,18 +22,19 @@
 
         <div class="card">
             <h2>Form Pendaftaran</h2>
-            <input placeholder="Nama Pasien">
-            <select>
+            <input id="NamaPasien" placeholder="Nama Pasien">
+            <select id="Poli">
                 <option>Poli Umum</option>
                 <option>Poli Gigi</option>
             </select>
             <br />
-            <button>Simpan</button>
+            <button onclick="SimpanData()">Simpan</button>
         </div>
 
         <div class="card">
             <h2>List Pendaftaran</h2>
             <table>
+                <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
@@ -52,10 +53,42 @@
                     <td>Gigi</td>
                     <td><span class="badge done">Selesai</span></td>
                 </tr>
+                 </thead>
+        <tbody id="tabelPendaftaran">
+        </tbody>
+    </table>
+</div>
             </table>
         </div>
 
     </div>
+    <script>
+    function SimpanData() {
+
+    let nama = document.getElementById("NamaPasien").value;
+    let poli = document.getElementById("Poli").value;
+
+    if (nama.trim() == "") {
+        alert("Nama pasien wajib diisi!");
+        return;
+    }
+
+    let tabel = document.getElementById("tabelPendaftaran");
+
+    let nomor = tabel.rows.length + 1;
+
+    let row = tabel.insertRow();
+
+    row.insertCell(0).innerHTML = nomor;
+    row.insertCell(1).innerHTML = nama;
+    row.insertCell(2).innerHTML = poli;
+    row.insertCell(3).innerHTML =
+        '<span class="badge wait">Menunggu</span>';
+
+    document.getElementById("NamaPasien").value = "";
+    document.getElementById("Poli").selectedIndex = 0;
+}
+</script>
 </body>
 
 </html>

@@ -19,32 +19,67 @@
         <a href="login.html">Logout</a>
     </div>
     <div class="main">
+    <h2>Resep & Farmasi</h2>
 
-        <div class="card">
-            <h2>Resep & Farmasi</h2>
-            <input placeholder="Nama Pasien">
-            <input placeholder="Obat">
-            <input placeholder="Jumlah">
-            <button>Tambah Obat</button>
-        </div>
+    <input type="text" id="NamaPasien" placeholder="Nama Pasien">
+    <input type="text" id="Obat" placeholder="Nama Obat">
+    <input type="number" id="Jumlah" placeholder="Jumlah">
 
-        <div class="card">
-            <h2>Daftar Resep</h2>
-            <table>
-                <tr>
-                    <th>Pasien</th>
-                    <th>Obat</th>
-                    <th>Qty</th>
-                </tr>
-                <tr>
-                    <td>Budi</td>
-                    <td>Paracetamol</td>
-                    <td>10</td>
-                </tr>
-            </table>
-        </div>
-
+    <button onclick="TambahObat()">Tambah Obat</button>
     </div>
+
+    <div class="card">
+    <h2>Daftar Resep</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Pasien</th>
+                <th>Obat</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelResep">
+            <tr>
+                <td>1</td>
+                <td>Budi</td>
+                <td>Paracetamol</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <script>
+function TambahObat() {
+
+    let nama = document.getElementById("NamaPasien").value;
+    let obat = document.getElementById("Obat").value;
+    let jumlah = document.getElementById("Jumlah").value;
+
+    if (nama.trim() === "" || obat.trim() === "" || jumlah === "") {
+        alert("Semua data harus diisi!");
+        return;
+    }
+
+    let tabel = document.getElementById("tabelResep");
+
+    let row = tabel.insertRow();
+    let nomor = tabel.rows.length;
+
+    row.insertCell(0).innerHTML = nomor;
+    row.insertCell(1).innerHTML = nama;
+    row.insertCell(2).innerHTML = obat;
+    row.insertCell(3).innerHTML = jumlah;
+
+    document.getElementById("NamaPasien").value = "";
+    document.getElementById("Obat").value = "";
+    document.getElementById("Jumlah").value = "";
+
+    alert("Obat berhasil ditambahkan!");
+}
+</script>
 </body>
 
 </html>

@@ -18,32 +18,67 @@
         <a class="active" href="kasir.html">Kasir</a>
         <a href="login.html">Logout</a>
     </div>
-    <div class="main">
 
-        <div class="card">
-            <h2>Pembayaran</h2>
-            <input placeholder="Nama Pasien">
-            <input placeholder="Total">
-            <button>Bayar</button>
-        </div>
+    <div class="card">
+    <h2>Pembayaran</h2>
 
-        <div class="card">
-            <h2>Riwayat Transaksi</h2>
-            <table>
-                <tr>
-                    <th>Pasien</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>Budi</td>
-                    <td>100000</td>
-                    <td>Lunas</td>
-                </tr>
-            </table>
-        </div>
-
+    <input type="text" id="NamaPasien" placeholder="Nama Pasien">
+    <input type="number" id="Total" placeholder="Total Pembayaran">
+    <button onclick="Bayar()">Bayar</button>
     </div>
-</body>
 
+    <div class="card">
+    <h2>Riwayat Transaksi</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Pasien</th>
+                <th>Total</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelTransaksi">
+            <tr>
+                <td>1</td>
+                <td>Budi</td>
+                <td>100000</td>
+                <td>
+                    <span class="badge done">Lunas</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+function Bayar() {
+
+    let nama = document.getElementById("NamaPasien").value;
+    let total = document.getElementById("Total").value;
+
+    if (nama.trim() === "" || total === "") {
+        alert("Data pembayaran harus diisi!");
+        return;
+    }
+
+    let tabel = document.getElementById("tabelTransaksi");
+
+    let row = tabel.insertRow();
+    let nomor = tabel.rows.length;
+
+    row.insertCell(0).innerHTML = nomor;
+    row.insertCell(1).innerHTML = nama;
+    row.insertCell(2).innerHTML = "Rp " + Number(total).toLocaleString("id-ID");
+    row.insertCell(3).innerHTML =
+        '<span class="badge done">Lunas</span>';
+
+    document.getElementById("NamaPasien").value = "";
+    document.getElementById("Total").value = "";
+
+    alert("Pembayaran berhasil!");
+}
+</script>
+</body>
 </html>
